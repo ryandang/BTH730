@@ -80,7 +80,8 @@
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
-                    <i class="fa fa-star fa-2x favourite"  popover="Favourite" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.fav}}
+                    <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
+                    <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                   </div>
                 </div>
               </div>
@@ -113,6 +114,7 @@
     <script src="js/angular.min.js"></script>
     <SCRIPT src="js/angular-sanitize.js"></SCRIPT>
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/underscore-min.js"></script>
     <script src="js/loginController.js"></script>
 
   </body>
