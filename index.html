@@ -8,11 +8,11 @@
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,13 +22,17 @@
   </head>
   <body class="bg" ng-controller="loginController">
     <div class="container-fluid">
-      <div class="row" style="border-bottom: solid 2px #eb5252; height: 50px">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <img style="margin-top: 5px;" src="./seneca.png" alt="Seneca Logo" />
-          <alert ng-if="msg" type="danger" close="closeAlert()">{{msg}}</alert>
+      <div class="row" style="border-bottom: solid 2px #eb5252; height: auto">
+        <alert ng-if="msg" type="danger" close="closeAlert()">{{msg}}</alert>
+        <div class="col-md-8 col-md-offset-2" style="padding-bottom: 17px;">
+          <div class="row">
+            <div class="col-md-8">
+              <img style="margin-top: 5px;" src="images/seneca.png" alt="Seneca Logo" />
+            </div>
+            <div class="col-md-4">
+            </div>
+          </div>
         </div>
-        <div class="col-md-2"></div>
       </div>
     </div>
     <div class="container-fluid">
@@ -83,13 +87,13 @@
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="ui-bootstrap-tpls-0.12.0.min.js"></script>
-    <script src="loginController.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/loginController.js"></script>
 
   </body>
 </html>

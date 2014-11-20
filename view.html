@@ -8,11 +8,11 @@
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,26 +22,46 @@
   </head>
   <body ng-controller="loginController">
     <div class="container-fluid">
-      <div class="row" style="border-bottom: solid 2px #eb5252; height: 50px">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <img style="margin-top: 5px;" src="./seneca.png" alt="Seneca Logo" />
-          <alert ng-if="msg" type="danger" close="closeAlert()">{{msg}}</alert>
+      <div class="row" style="border-bottom: solid 2px #eb5252; height: auto">
+        <div class="col-md-8 col-md-offset-2" style="padding-bottom: 10px;">
+          <div class="row">
+            <div class="col-md-8">
+              <img style="margin-top: 5px;" src="images/seneca.png" alt="Seneca Logo" />
+              <a style="color: #eb5252; font-size: 16px; position: relative; top: 8px; margin-left: 50px;" href="#"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>Notification <span class="badge" style="background-color: #eb5252">2</span></a>
+            </div>
+            <div class="col-md-4">
+              <img src="images/profile.png" width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
+
+              <button type="button" class="btn btn-danger btn-md">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="col-md-2"></div>
       </div>
     </div>
     <div class="container-fluid">
-
+      <div ckass="row">
+        <div class="col-md-12 cover-photo">
+          <div ckass="row">
+            <div class="col-md-4 col-md-offset-5">
+                <div style="position: relative; bottom: -80px">
+                  <img src="images/profile.png" class="profile" alt="profile image" style="border-radius: 5px;"/>
+                  <p style="color: white; max-width: 200px;"> I'm Ryan. Currently in 7th semester of <a href="#">#BSD</a> Program at Seneca@York </p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="ui-bootstrap-tpls-0.12.0.min.js"></script>
-    <script src="loginController.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/loginController.js"></script>
 
   </body>
 </html>
