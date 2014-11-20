@@ -1,0 +1,55 @@
+h1, h2, h3 {
+    color: #eb5252;
+}
+
+.bg {
+
+    background-image:url('../images/bg3.jpg');
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;
+}
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.alert {
+    position: absolute;
+    top: 0px;
+    width: 70%;
+    z-index: 1000;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.cover-photo {
+    background-image:url('../images/cover.jpg');
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;
+    height: 400px;
+    min-width: 500px;
+}
+
+
+.profile {
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 900px) {
+
+ .cover-photo {
+    height: 300px;
+ }
+
+.profile {
+    width: 150px;
+    height: 150px;
+}
+}
