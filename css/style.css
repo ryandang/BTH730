@@ -90,6 +90,12 @@ h1, h2, h3 {
     color: #f0ad4e;
 }
 
+.favourited {
+    cursor: pointer;
+    margin-left: 50px;
+    color: #f0ad4e;
+}
+
 @media (max-width: 900px) {
 
  .cover-photo {
