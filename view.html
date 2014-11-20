@@ -94,13 +94,65 @@
               <span class="tabheading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> My Post <br/>{{myPosts.length}}</span>
 
             </tab-heading>
-            I've got an HTML heading, and a select callback. Pretty cool! <p ng-bind-html="content"></p>
+            <div>
+              <div class="post" ng-repeat="post in myPosts">
+                <div style="width: 100%; float: left">
+                  <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> <span ng-bind-html="post.type"></span> <b>{{post.title}}</b> <span ng-bind-html="post.content"></span>
+                    <br/>
+                  </div>
+                  <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
+                <div ng-if="post.image">
+                  <img src="{{post.image}}" class="postImg" />
+                </div>
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div style="height: 60px">
+                  <br/>
+                  <div style="width: 60px; float: left">&nbsp;</div>
+                  <div style="width: 70%; float: left">
+                    <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
+                    <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
+                    <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
           </tab>
           <tab>
             <tab-heading>
                <span class="tabheading"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favourite <br/>{{myFavs.length}}</span>
             </tab-heading>
-            I've got an HTML heading, and a select callback. Pretty cool!
+            <div>
+              <div class="post" ng-repeat="post in myFavs">
+                <div style="width: 100%; float: left">
+                  <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> <span ng-bind-html="post.type"></span> <b>{{post.title}}</b> <span ng-bind-html="post.content"></span>
+                    <br/>
+                  </div>
+                  <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
+                <div ng-if="post.image">
+                  <img src="{{post.image}}" class="postImg" />
+                </div>
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
+                <div style="height: 60px">
+                  <br/>
+                  <div style="width: 60px; float: left">&nbsp;</div>
+                  <div style="width: 70%; float: left">
+                    <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
+                    <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
+                    <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
           </tab>
         </tabset>
       </div>
