@@ -42,6 +42,54 @@ h1, h2, h3 {
     height: 200px;
 }
 
+
+.tabheading {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tab-content {
+
+}
+
+.post {
+    border: solid 1px #bdbdbd;
+    min-height: 100px;
+    margin-top: 5px;
+    border-radius: 5px;
+    height: auto !important;
+    padding: 20px;
+}
+
+.post:hover {
+    border: solid 1px #eb5252;
+}
+
+.postImg {
+    height: 200px;
+    display: block;
+    float: right;
+    /*margin-right: 30px;*/
+    /*margin: 0 auto;*/
+}
+
+.reply {
+    cursor: pointer;
+}
+
+.reply:hover {
+    color: #eb5252;
+}
+
+.favourite {
+    cursor: pointer;
+    margin-left: 50px;
+}
+
+.favourite:hover {
+    color: #f0ad4e;
+}
+
 @media (max-width: 900px) {
 
  .cover-photo {
