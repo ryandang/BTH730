@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="bthApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +20,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="bg" ng-controller="loginController">
     <div class="container-fluid">
       <div class="row" style="border-bottom: solid 2px #eb5252; height: 50px">
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <img style="margin-top: 5px;" src="./seneca.png" alt="Seneca Logo" />
+          <alert ng-if="msg" type="danger" close="closeAlert()">{{msg}}</alert>
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -42,11 +43,11 @@
             <div class="col-md-1">
             </div>
             <div class="col-md-5">
-              <div class="panel panel-default" style="margin-top: 10px">
-                <div class="panel-body">
-
-                    <input type="text" class="form-control" placeholder="Email"/><br/>
-                    <input type="password" class="form-control" placeholder="Password"/><br/>
+              <div class="panel panel-default" style="margin-top: 25px;">
+                <div class="panel-footer">
+                    <h4>Sign In</h4>
+                    <input type="text" ng-model="email" class="form-control" placeholder="Email"/><br/>
+                    <input type="password" ng-model="password" class="form-control" placeholder="Password"/><br/>
 
                      <div class="row" style="position: relative; top: -10px">
                       <div class="col-md-6">
@@ -57,13 +58,13 @@
                       </div>
                     </div>
                     <div style="text-align:center;">
-                      <button class="btn btn-sm btn-danger" type="button">Log in</button>
+                      <button class="btn btn-md btn-danger" type="button" ng-click="submit()">Log in</button>
                     </div>
                 </div>
               </div>
 
               <div class="panel panel-default" style="margin-top: 10px">
-                <div class="panel-body">
+                <div class="panel-footer">
                   <h4>Not Yet A Member? <span style="color: grey">Sign up</span></h4>
                   <input type="text" class="form-control" placeholder="Full Name"/><br/>
                     <input type="text" class="form-control" placeholder="Email"/><br/>
@@ -87,6 +88,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="loginController.js"></script>
 
   </body>
 </html>
