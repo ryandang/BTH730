@@ -21,10 +21,46 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title inline">Make New Post</h3> <i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -40px" ng-click="cancel()"></i>
+
+        </div>
+        <div class="modal-body">
+          <label> I am </label> <input  ng-model="type" type="radio" value="<a href='#'>#Sell</a>" ng-click="isSelling=true"/> Selling <input ng-model="type" type="radio" value="<a href='#'>#Buy</a>" ng-click="isSelling=false" /> Buying
+          <div class="row">
+            <div class="col-md-9">
+              <input type="text" ng-model="title" typeahead="title for title in titles | filter:$viewValue | limitTo:8" class="form-control" placeholder="Book Title"/>
+            </div>
+            <div class="col-md-3">
+              <div ng-if="isSelling" class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" ng-model="price" class="form-control" placeholder="Price"/><br/>
+              </div>
+            </div>
+          </div>
+          <br/>
+           <label>Select Campus</label>
+            <div class="list-group">
+              <a href="#" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
+              <a href="#" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
+              <a href="#" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
+              <a href="#" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
+              <a href="#" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
+            </div>
+            <textarea rows="5" class="form-control" ng-model="description" value="#Text to me #BTN" placeholder="Description. Don't forget to use hashtag!"></textarea>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-md" ng-click="ok()">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
+            </button>
+        </div>
+    </script>
   </head>
   <body ng-controller="viewController">
     <div class="container-fluid">
-      <div class="row" style="border-bottom: solid 2px #eb5252; height: auto">
+      <div class="row" style="border-bottom: solid 2px #eb5252; height: auto; width: 100%; z-index:100; background: white; position: fixed">
         <div class="col-md-8 col-md-offset-2" style="padding-bottom: 10px;">
           <div class="row">
             <div class="col-md-8">
@@ -34,7 +70,7 @@
             <div class="col-md-4">
               <img src="images/profile.png" width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
 
-              <button type="button" class="btn btn-danger btn-md">
+              <button type="button" class="btn btn-danger btn-md" ng-click="addPost()">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
               </button>
             </div>
@@ -62,10 +98,11 @@
               <span class="tabheading"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Posts<br/>{{allPosts.length}}</span>
             </tab-heading>
             <div>
-              <div class="post" ng-repeat="post in allPosts">
-                <div style="width: 100%; float: left">
+              <div class="post" ng-repeat="post in allPosts | reverse">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> <span ng-bind-html="post.type"></span> <b>{{post.title}}</b> <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                   <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
@@ -75,8 +112,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 60px">
-                  <br/>
+                <div style="height: 25px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -85,20 +121,18 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
           </tab>
           <tab>
             <tab-heading heading="SJ">
               <span class="tabheading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> My Post <br/>{{myPosts.length}}</span>
-
             </tab-heading>
             <div>
-              <div class="post" ng-repeat="post in myPosts">
-                <div style="width: 100%; float: left">
+              <div class="post" ng-repeat="post in myPosts | reverse">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> <span ng-bind-html="post.type"></span> <b>{{post.title}}</b> <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                   <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
@@ -108,8 +142,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 60px">
-                  <br/>
+                <div style="height: 25px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -118,8 +151,6 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
           </tab>
           <tab>
@@ -127,10 +158,12 @@
                <span class="tabheading"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favourite <br/>{{myFavs.length}}</span>
             </tab-heading>
             <div>
-              <div class="post" ng-repeat="post in myFavs">
-                <div style="width: 100%; float: left">
+              <div ng-if="!myFavs.length"> You don't have any Favourite post yet.</div>
+              <div class="post" ng-repeat="post in myFavs | reverse">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> <span ng-bind-html="post.type"></span> <b>{{post.title}}</b> <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                   <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
@@ -140,8 +173,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 60px">
-                  <br/>
+                <div style="height: 25px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -150,8 +182,6 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
           </tab>
         </tabset>
@@ -168,6 +198,21 @@
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="js/loginController.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      $(".expandable").click(function() {
+        if($(this).height() == 100) {
+          $(this).css("height", "auto");
+          var height = $(this).height();
+          $(this).css("height", "100px");
+          $(this).animate({ height: height }, 150);
+        }
+        else
+          $(this).animate({ height: "100px" }, 150);
 
+      });
+    });
+
+    </script>
   </body>
 </html>
