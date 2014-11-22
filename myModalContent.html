@@ -1,8 +1,25 @@
     <script type="text/javascript">
     $(function() {
+      $('#textarea1').textcomplete([
+          { // tech companies
+              words: [ '#google', '#Google', 'facebook', '#apple', '#github', "#cheap", "#BSD", "#CPA", "#bsd", "#cpa", "#BTN710", "#BTS730", "#BTH740", "#YORK", "#KING", "#Markham", "#OTHER", "#sell", "#buy", "#book"],
+              match: /(#\w+)$/i,
+              search: function (term, callback) {
+                  callback($.map(this.words, function (word) {
+                      return word.indexOf(term) === 0 ? word : null;
+                  }));
+              },
+              index: 1,
+              replace: function (word) {
+                  return word + ' ';
+              }
+          }
+      ], { maxCount: 5, className: "hashtag"});
+
       $("#file").change(function() {
         $("#previewImage").html("<img style='margin-top: 5px;' height='100' src='images/" + $("#file").val() + "' />");
       });
+
     });
 
     </script>
@@ -32,7 +49,7 @@
               <a href="#" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
               <a href="#" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
             </div>
-            <textarea rows="5" class="form-control" ng-model="description" placeholder="Description. Don't forget to use hashtag!"></textarea>
+            <textarea id="textarea1" rows="5" class="form-control" ng-model="description" placeholder="Description. Don't forget to use hashtag!"></textarea>
             <div id="previewImage">
 
             </div>
