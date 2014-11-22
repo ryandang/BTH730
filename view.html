@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="font-awesome-4.2.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" href="css/jquery.textcomplete.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,7 +64,6 @@
         </div>
       </div>
     </div>
-
     <div ckass="row">
       <div class="col-md-8 col-md-offset-2">
       <div style="width: 100%; height: 40px;">
@@ -108,13 +107,13 @@
               <div class="post" ng-repeat="post in allPosts | reverse">
                 <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
                 <div ng-if="post.image">
-                  <img src="{{post.image}}" class="postImg" />
+                  <img ng-if="post.image !== 'images/'" src="{{post.image}}" class="postImg" />
                 </div>
                   </div>
                 </div>
@@ -138,13 +137,13 @@
               <div class="post" ng-repeat="post in myPosts | reverse">
                 <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
                 <div ng-if="post.image">
-                  <img src="{{post.image}}" class="postImg" />
+                  <img ng-if="post.image !== 'images/'" src="{{post.image}}" class="postImg" />
                 </div>
                   </div>
                 </div>
@@ -169,13 +168,13 @@
               <div class="post" ng-repeat="post in myFavs | reverse">
                 <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
-                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b><br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
+                  <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
                     <br/>
                   </div>
                   <div style="width: 30%; float: left; text-align: right"><b>Price: ${{post.price}}</b>
                 <div ng-if="post.image">
-                  <img src="{{post.image}}" class="postImg" />
+                  <img ng-if="post.image !== 'images/'" src="{{post.image}}" class="postImg" />
                 </div>
                   </div>
                 </div>
@@ -200,11 +199,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/jquery.textcomplete.min.js"></script>
     <script src="js/angular.min.js"></script>
     <SCRIPT src="js/angular-sanitize.js"></SCRIPT>
     <script src="js/ui-bootstrap-tpls-0.12.0.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="js/loginController.js"></script>
+
     <script type="text/javascript">
     $(function() {
       $(".expandable").click(function() {
@@ -223,11 +224,7 @@
         alert("ASDA");
         console.log($("#file").val());
       });
-      // function addImage() {
-      //   console.log($("#file").val());
-      // }
     });
-
     </script>
   </body>
 </html>

@@ -25,6 +25,12 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
   $scope.myPosts = [];
   $scope.myFavs = [];
 
+  var now = new Date();
+
+  var yesterday = new Date("November 21, 2014 07:15:00");
+  var yesterday2 = new Date("November 21, 2014 01:15:00");
+  var yesterday3 = new Date("November 20, 2014 08:15:00");
+
   var item1 = {
       id: 1,
       owner: "Ryan Dang",
@@ -37,7 +43,8 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
       fav: 1,
       isFaved: false,
       content: "The book is in #perfect condition. The price can be <a href='#'>#negotiated</a>. This book is for <a href='#'>#BTN710</a> <a href='#'>#BSD</a> program",
-      campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"]
+      campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"],
+      date: yesterday3
     };
 
     var item2 =
@@ -53,7 +60,8 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
       fav: 3,
       isFaved: true,
       content: "The book is in #perfect condition. The price can be <a href='#'>#negotiated</a>. This book is for <a href='#'>#BTN710</a> <a href='#'>#BSD</a> program",
-      campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"]
+      campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"],
+      date: yesterday2
     };
 
     var item3 = {
@@ -68,7 +76,8 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
       fav: 2,
       isFaved: false,
       content: "Gideon calls me his angel, but he’s the miracle in my life. My gorgeous, wounded warrior, so determined to slay my demons while refusing to face his own.The vows we'd exchanged should have bound us tighter than blood and flesh. Instead they opened old wounds, exposed pain and insecurities, and lured bitter enemies out of the shadows. I felt him slipping from my grasp, my greatest fears becoming my reality, my love tested in ways I wasn’t sure I was strong enough to bear.At the brightest time in our lives, the darkness of his past encroached and threatened everything we’d worked so hard for. We faced a terrible choice: the familiar safety of the lives we’d had before each other or the fight for a future that suddenly seemed an impossible and hopeless dream…",
-      campuses: ["<a href='#'>#King</a>"]
+      campuses: ["<a href='#'>#King</a>"],
+      date: yesterday
     };
 
     var item4 = {
@@ -83,7 +92,8 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
       fav: 6,
       isFaved: false,
       content: "The book original cost is $135. I'm selling it for really <a href='#'>#cheap</a> This book is for <a href='#'>#BTS730</a> <a href='#'>#BSD</a> program",
-      campuses: ["<a href='#'>#King</a>"]
+      campuses: ["<a href='#'>#King</a>"],
+      date: now
     };
 
     $scope.allPosts.push(item1);
@@ -165,6 +175,7 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
 
     var temp = {};
     var campuses = [];
+    var now = new Date();
     $scope.description = $scope.description || "";
 
     if($scope.selectedYork)
@@ -192,6 +203,7 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
     temp.isFaved = false;
     temp.content = $scope.description;
     temp.campuses = campuses;
+    temp.date = now;
 
     var matches = $scope.description.match(/#\w+/g);
     _.each(matches, function(hashtag) {
@@ -213,62 +225,3 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
     return items.slice().reverse();
   };
 });
-
-// .factory('Data', function ($rootScope) {
-//   var Data = {};
-//   var postId = 40;
-//   var allPosts = [
-//     {
-//       id: 1,
-//       owner: "Ryan Dang",
-//       profile: "images/profile.png",
-//       title: "Book title 1",
-//       type: "<a href='#'>#Sell</a>",
-//       image: null,
-//       price: 25,
-//       reply: 2,
-//       fav: 1,
-//       isFaved: false,
-//       content: "The book is in #perfect condition. The price can be <a href='#'>#negotiated</a>. This book is for <a href='#'>#BTN710</a> <a href='#'>#BSD</a> program",
-//       campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"]
-//     },
-//     {
-//       id: 2,
-//       owner: "Luong Chuong",
-//       profile: "images/profile2.png",
-//       title: "Ken Follett",
-//       type: "<a href='#'>#Sell</a>",
-//       image: "images/book1.jpg",
-//       price: 20,
-//       reply: 12,
-//       fav: 3,
-//       isFaved: true,
-//       content: "The book is in #perfect condition. The price can be <a href='#'>#negotiated</a>. This book is for <a href='#'>#BTN710</a> <a href='#'>#BSD</a> program",
-//       campuses: ["<a href='#'>#York</a>", "<a href='#'>#King</a>"]
-//     },
-//     {
-//       id: 3,
-//       owner: "Ryan Dang",
-//       profile: "images/profile.png",
-//       title: "Sylvia Day",
-//       type: "<a href='#'>#Sell</a>",
-//       image: "images/book2.jpg",
-//       price: 25,
-//       reply: 5,
-//       fav: 2,
-//       isFaved: false,
-//       content: "Gideon calls me his angel, but he’s the miracle in my life. My gorgeous, wounded warrior, so determined to slay my demons while refusing to face his own.The vows we'd exchanged should have bound us tighter than blood and flesh. Instead they opened old wounds, exposed pain and insecurities, and lured bitter enemies out of the shadows. I felt him slipping from my grasp, my greatest fears becoming my reality, my love tested in ways I wasn’t sure I was strong enough to bear.At the brightest time in our lives, the darkness of his past encroached and threatened everything we’d worked so hard for. We faced a terrible choice: the familiar safety of the lives we’d had before each other or the fight for a future that suddenly seemed an impossible and hopeless dream…",
-//       campuses: ["<a href='#'>#King</a>"]
-//     }
-//   ];
-
-//   Data.getAllPosts = function() {
-//     return allPosts;
-//   }
-
-//   Data.addPost = function(post) {
-//     allPosts.push(post);
-//   }
-
-//   return Data;
-// });
