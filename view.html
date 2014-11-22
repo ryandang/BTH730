@@ -21,53 +21,27 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title inline">Make New Post</h3> <i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -40px" ng-click="cancel()"></i>
 
-        </div>
-        <div class="modal-body">
-          <label> I am </label> <input  ng-model="type" type="radio" value="<a href='#'>#Sell</a>" ng-click="isSelling=true"/> Selling <input ng-model="type" type="radio" value="<a href='#'>#Buy</a>" ng-click="isSelling=false" /> Buying
-          <div class="row">
-            <div class="col-md-9">
-              <input type="text" ng-model="title" typeahead="title for title in titles | filter:$viewValue | limitTo:8" class="form-control" placeholder="Book Title"/>
-            </div>
-            <div class="col-md-3">
-              <div ng-if="isSelling" class="input-group">
-                <span class="input-group-addon">$</span>
-                <input type="text" ng-model="price" class="form-control" placeholder="Price"/><br/>
-              </div>
-            </div>
-          </div>
-          <br/>
-           <label>Select Campus</label>
-            <div class="list-group">
-              <a href="#" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
-              <a href="#" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
-              <a href="#" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
-              <a href="#" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
-              <a href="#" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
-            </div>
-            <textarea rows="5" class="form-control" ng-model="description" value="#Text to me #BTN" placeholder="Description. Don't forget to use hashtag!"></textarea>
-
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-md" ng-click="ok()">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
-            </button>
-        </div>
-    </script>
   </head>
   <body ng-controller="viewController">
     <div class="container-fluid">
       <div class="row" style="border-bottom: solid 2px #eb5252; height: auto; width: 100%; z-index:100; background: white; position: fixed">
         <div class="col-md-8 col-md-offset-2" style="padding-bottom: 10px;">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
               <img style="margin-top: 5px;" src="images/seneca.png" alt="Seneca Logo" />
               <a style="color: #eb5252; font-size: 16px; position: relative; top: 8px; margin-left: 50px;" href="#"><i class="glyphicon glyphicon-bell"></i></span>Notification <span class="badge" style="background-color: #eb5252">2</span></a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
+              <div class="input-group" style="margin-top: 7px;">
+
+                <input type="text" ng-model="price" class="form-control" placeholder="Quick Search"/><br/>
+                <span class="input-group-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-3">
               <img src="images/profile.png" width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
 
               <button type="button" class="btn btn-danger btn-md" ng-click="addPost()">
@@ -90,6 +64,39 @@
         </div>
       </div>
     </div>
+
+    <div ckass="row">
+      <div class="col-md-8 col-md-offset-2">
+      <div style="width: 100%; height: 40px;">
+      <button style="width: 150px; position: relative; float: right; display: inline-block" class="btn btn-danger"  ng-click="isCollapsed = !isCollapsed">{{isCollapsed? "Hide Filter" : "Show Filter"}} <i class="fa fa-filter"></i>
+      </button>
+      </div>
+      <div collapse="!isCollapsed">
+        <div class="well well-lg">
+          <div class="row">
+            <div class="col-md-6"><input type="text" placeholder="Book Title" class="form-control" /><br/>
+            <textarea rows="2" class="form-control" placeholder="Add Hashtags"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label> Select campuses </label><br/>
+            <div class="list-group">
+              <a style="cursor: pointer" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
+              <a style="cursor: pointer" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
+              <a style="cursor: pointer" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
+              <a style="cursor: pointer" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
+              <a style="cursor: pointer" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
+            </div>
+            <div>
+              <br/>
+              <button class="btn btn-danger">Search <i class="fa fa-search"></i></button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
     <div ckass="row">
       <div class="col-md-8 col-md-offset-2 col-sm-12">
         <tabset justified="true" style="margin-top: 10px; padding-bottom: 50px;">
@@ -211,6 +218,14 @@
           $(this).animate({ height: "100px" }, 150);
 
       });
+
+      $("#file").click(function() {
+        alert("ASDA");
+        console.log($("#file").val());
+      });
+      // function addImage() {
+      //   console.log($("#file").val());
+      // }
     });
 
     </script>
