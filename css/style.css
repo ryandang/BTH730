@@ -93,7 +93,7 @@ h1, h2, h3, a {
 }
 
 .favourite:hover {
-    color: #f0ad4e;
+    opacity: 0.6;
 }
 
 .favourited {
@@ -150,12 +150,11 @@ h1, h2, h3, a {
 }
 
 .list-item:hover {
-    background-color: #eb5252;
-    color: white;
+    opacity: 0.6;
 }
 
 .selectedTag:hover {
-    background-color: #eb5252;
+    opacity: 0.6;
     color: white;
 }
 
