@@ -33,6 +33,11 @@ Favourite and Un Favourite a post
 
 Make new Post
 
+    - Auto Complete for books title
+
+    - Suggest Hashtag
+
+
 Non working features
 ======
 
