@@ -1,4 +1,4 @@
-h1, h2, h3 {
+h1, h2, h3, a {
     color: #eb5252;
 }
 
@@ -75,6 +75,7 @@ h1, h2, h3 {
 
 .reply {
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .reply:hover {
@@ -84,6 +85,7 @@ h1, h2, h3 {
 .favourite {
     cursor: pointer;
     margin-left: 50px;
+    margin-top: 5px;
 }
 
 .favourite:hover {
@@ -94,6 +96,74 @@ h1, h2, h3 {
     cursor: pointer;
     margin-left: 50px;
     color: #f0ad4e;
+    margin-top: 5px;
+}
+
+/*.close {
+    color: #eb5252;
+}
+
+.close:hover {
+    color: black;
+}*/
+
+.inline {
+    /*display: inline;*/
+    text-align: center;
+}
+
+.list-group a
+{
+    display: inline-block;
+    height: 30px;
+    color: black;
+
+}
+.list-group a:hover
+{
+    text-decoration: none;
+}
+.selectedTag {
+    background-color: #eb5252;
+    color: white;
+}
+
+.list-group .selectedTag {
+    text-decoration: none;
+    color: white;
+}
+
+.list-item {
+    width: 80px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+    border: solid 1px #bdbdbd;
+}
+
+.list-item:hover {
+    background-color: #eb5252;
+    color: white;
+}
+
+.selectedTag:hover {
+    background-color: #eb5252;
+    color: white;
+}
+
+.file {
+    opacity: 0;
+    width: 50px;
+    height: 40px;
+    position: absolute;
+    z-index:10;
+    cursor: pointer;
+}
+
+.camera {
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
 }
 
 @media (max-width: 900px) {

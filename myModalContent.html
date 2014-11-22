@@ -1,0 +1,46 @@
+    <script type="text/javascript">
+    $(function() {
+      $("#file").change(function() {
+        $("#previewImage").html("<img style='margin-top: 5px;' height='100' src='images/" + $("#file").val() + "' />");
+      });
+    });
+
+    </script>
+        <div class="modal-header">
+            <h3 class="modal-title inline">Make New Post</h3> <i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -40px" ng-click="cancel()"></i>
+
+        </div>
+        <div class="modal-body">
+          <label> I am </label> <input  ng-model="type" type="radio" value="<a href='#'>#Sell</a>" ng-click="isSelling=true"/> Selling <input ng-model="type" type="radio" value="<a href='#'>#Buy</a>" ng-click="isSelling=false" /> Buying
+          <div class="row">
+            <div class="col-md-9">
+              <input type="text" ng-model="title" typeahead="title for title in titles | filter:$viewValue | limitTo:8" class="form-control" placeholder="Book Title"/>
+            </div>
+            <div class="col-md-3">
+              <div ng-if="isSelling" class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" ng-model="price" class="form-control" placeholder="Price"/><br/>
+              </div>
+            </div>
+          </div>
+          <br/>
+           <label>Select Campus</label>
+            <div class="list-group">
+              <a href="#" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
+              <a href="#" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
+              <a href="#" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
+              <a href="#" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
+              <a href="#" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
+            </div>
+            <textarea rows="5" class="form-control" ng-model="description" placeholder="Description. Don't forget to use hashtag!"></textarea>
+            <div id="previewImage">
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="file" type="file" class="file"/><i class="fa fa-camera fa-2x camera"></i>
+
+            <button type="button" class="btn btn-danger btn-md" ng-click="ok()">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
+            </button>
+        </div>
