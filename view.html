@@ -42,8 +42,20 @@
               </div>
             </div>
             <div class="col-md-3">
-              <img src="images/profile.png" width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
-
+    <span class="dropdown" dropdown is-open="status.isopen">
+      <img src="images/profile.png" class="dropdown-toggle" dropdown-toggle width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
+      <ul class="dropdown-menu" style="top: 30px;">
+        <li >
+          <a href>Edit Profile</a>
+        </li>
+        <li >
+          <a href>Setting</a>
+        </li>
+        <li >
+          <a href>Log Out</a>
+        </li>
+      </ul>
+    </span>
               <button type="button" class="btn btn-danger btn-md" ng-click="addPost()">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
               </button>

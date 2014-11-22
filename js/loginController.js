@@ -104,7 +104,17 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
     $scope.myPosts.push(item3);
     $scope.myFavs.push(item2);
 
-  $scope.postId = 45;
+    $scope.postId = 45;
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
 
   $scope.addFav = function(id) {
     _.each($scope.allPosts, function(post) {

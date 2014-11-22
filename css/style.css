@@ -107,6 +107,10 @@ h1, h2, h3, a {
     background-color: yellow;
 }
 
+.dropdown-menu li a:hover{
+    background-color: #eb5252;
+}
+
 /*.close {
     color: #eb5252;
 }
