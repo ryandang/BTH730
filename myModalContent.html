@@ -34,7 +34,7 @@
               <input type="text" ng-model="title" typeahead="title for title in titles | filter:$viewValue | limitTo:8" class="form-control" placeholder="Book Title"/>
             </div>
             <div class="col-md-3">
-              <div ng-if="isSelling" class="input-group">
+              <div ng-show="isSelling" class="input-group">
                 <span class="input-group-addon">$</span>
                 <input type="text" ng-model="price" class="form-control" placeholder="Price"/><br/>
               </div>
