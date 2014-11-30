@@ -32,7 +32,7 @@
               <img style="margin-top: 5px;" src="images/seneca.png" alt="Seneca Logo" />
               <a style="color: #eb5252; font-size: 16px; position: relative; top: 8px; margin-left: 50px;" href="#"><i class="glyphicon glyphicon-bell"></i></span>Notification <span class="badge" style="background-color: #eb5252">2</span></a>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
 <!--               <div class="input-group" style="margin-top: 7px;">
 
                 <input type="text" ng-model="price" class="form-control" placeholder="Quick Search"/><br/>
@@ -41,7 +41,7 @@
                 </span>
               </div> -->
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
     <span class="dropdown" dropdown is-open="status.isopen">
       <img src="images/profile.png" class="dropdown-toggle" dropdown-toggle width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
       <ul class="dropdown-menu" style="top: 30px;">
@@ -179,13 +179,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 25px">
+                <div style="height: 50px" class="bottomexpand">
                   <div style="width: 60px; float: left">&nbsp;</div>
-                  <div style="width: 70%; float: left">
+                  <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                     <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
+                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -211,13 +212,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 25px">
+                <div style="height: 50px" class="bottomexpand">
                   <div style="width: 60px; float: left">&nbsp;</div>
-                  <div style="width: 70%; float: left">
+                  <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                     <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
+                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
