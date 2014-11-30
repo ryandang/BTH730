@@ -199,7 +199,7 @@ li:focus: {
     opacity: 0.5;
     position: absolute;
     left: -5px;
-
+    cursor: pointer;
 }
 
 .continue:hover {

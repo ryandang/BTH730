@@ -39,7 +39,7 @@
       }
 
       function bottomExpand(e) {
-          var expandable = $(e).parent().find("div").first();
+          var expandable = $(e).parent().parent().parent().find("div").first();
 
           if(expandable.height() == 100) {
             expandable.css("height", "auto");
@@ -182,14 +182,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
+                <div style="height: 50px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                     <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
-                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
+                    <img onclick="bottomExpand(this)" src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -214,14 +214,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
+                <div style="height: 50px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                     <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
-                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
+                    <img onclick="bottomExpand(this)" src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -247,14 +247,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
+                <div style="height: 50px">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
                     <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
-                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
+                    <img onclick="bottomExpand(this)" src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
