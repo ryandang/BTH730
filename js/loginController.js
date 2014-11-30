@@ -24,8 +24,26 @@ angular.module('bthApp', ["ui.bootstrap", "ngSanitize"])
   $scope.allPosts = [];
   $scope.myPosts = [];
   $scope.myFavs = [];
-
-  var now = new Date();
+  $scope.titles = [
+    "The Hunger Games",
+    " Harry Potter and the Order of the Phoenix (Harry Potter, #5) ",
+    " Twilight (Twilight, #1)",
+    "To Kill a Mockingbird",
+    "The Lord of the Rings (The Lord of the Rings, #1-3)",
+    "The Catcher in the Rye",
+    "The Great Gatsby",
+    "The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1)",
+    "Lord of the Flies",
+    "Pride and Prejudice",
+    "Pride and Prejudice",
+    "The Decameron",
+    "Journey to the End of the Night",
+    "The Canterbury Tales",
+    "Great Expectations",
+    "Jacques the Fatalist",
+    "Madame Bovary"
+  ];
+    var now = new Date();
 
   var yesterday = new Date("November 21, 2014 07:15:00");
   var yesterday2 = new Date("November 21, 2014 01:15:00");

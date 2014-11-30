@@ -32,16 +32,16 @@
               <img style="margin-top: 5px;" src="images/seneca.png" alt="Seneca Logo" />
               <a style="color: #eb5252; font-size: 16px; position: relative; top: 8px; margin-left: 50px;" href="#"><i class="glyphicon glyphicon-bell"></i></span>Notification <span class="badge" style="background-color: #eb5252">2</span></a>
             </div>
-            <div class="col-md-3">
-              <div class="input-group" style="margin-top: 7px;">
+            <div class="col-md-2">
+<!--               <div class="input-group" style="margin-top: 7px;">
 
                 <input type="text" ng-model="price" class="form-control" placeholder="Quick Search"/><br/>
                 <span class="input-group-addon">
                   <i class="fa fa-search"></i>
                 </span>
-              </div>
+              </div> -->
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
     <span class="dropdown" dropdown is-open="status.isopen">
       <img src="images/profile.png" class="dropdown-toggle" dropdown-toggle width="40" height="40" alt="profile image" style="border-radius: 5px; margin-top: 5px; margin-right: 20px; cursor: pointer"/>
       <ul class="dropdown-menu" style="top: 30px;">
@@ -57,16 +57,16 @@
       </ul>
     </span>
               <button type="button" class="btn btn-danger btn-md" ng-click="addPost()">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"> </span> List A book
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div ckass="row">
+    <div class="row">
       <div class="col-md-12 cover-photo">
-        <div ckass="row">
+        <div class="row">
           <div class="col-md-4 col-md-offset-5">
               <div style="position: relative; bottom: -80px">
                 <img src="images/profile.png" class="profile" alt="profile image" style="border-radius: 5px;"/>
@@ -76,44 +76,61 @@
         </div>
       </div>
     </div>
-    <div ckass="row">
+    <div class="row">
       <div class="col-md-8 col-md-offset-2">
-      <div style="width: 100%; height: 40px;">
-      <button style="width: 150px; position: relative; float: right; display: inline-block" class="btn btn-danger"  ng-click="isCollapsed = !isCollapsed">{{isCollapsed? "Hide Filter" : "Show Filter"}} <i class="fa fa-filter"></i>
-      </button>
+        <div class="row" style=" margin-top: 20px;">
+          <div class="col-md-2"></div>
+          <div class="col-md-6"><input type="text" ng-model="title" typeahead="title for title in titles | filter:$viewValue | limitTo:8" placeholder="Search for book by book title" class="form-control" /></div>
+          <div class="col-md-4"><button class="btn btn-danger">Search <i class="fa fa-search"></i></button></div>
+        </div>
+
+
+      <div class="row" data-ng-show="!isCollapsed">
+        <div class="col-md-12 well" style="margin-top: 20px;">
+          Advanced search options
+          <button style="width: 150px; position: relative; float: right; display: inline-block" class="btn btn-danger"  ng-click="isCollapsed = !isCollapsed">Show <i class="fa fa-angle-double-down"></i>
+
+          </button>
+        </div>
       </div>
-      <div collapse="!isCollapsed">
-        <div class="well well-lg">
-          <div class="row">
-            <div class="col-md-6"><input type="text" placeholder="Book Title" class="form-control" /><br/>
-            <textarea rows="2" class="form-control" placeholder="Add Hashtags"></textarea>
+
+      <div class="row" collapse="!isCollapsed">
+        <div class="col-md-12 well well-lg" style="margin-top: 20px;">
+          <div class="row"><i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -20px" ng-click="isCollapsed = !isCollapsed"></i>
+            <div class="col-md-6">
+
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" placeholder="Max Price" class="form-control" style="width: 150px"/>
+              </div>
+
+              <br/>
+            <textarea rows="2" class="form-control" id="textarea2" placeholder="Add Hashtags. e.g #cheap, #BTH740, #BSD"></textarea>
             </div>
             <div class="col-md-6">
-              <label> Select campuses </label><br/>
-            <div class="list-group">
+              <div style="position: relative; top: -20px;">
+              <label>Select Campus Below:</label> <br/><i>Click on the button to select or de-select your campuses</i>
+            <div class="list-group" <div class="list-group" style="box-shadow: 0px 0px 0px #888888;">
               <a style="cursor: pointer" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
               <a style="cursor: pointer" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
               <a style="cursor: pointer" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
               <a style="cursor: pointer" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
               <a style="cursor: pointer" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
-            </div>
-            <div>
-              <br/>
-              <button class="btn btn-danger">Search <i class="fa fa-search"></i></button>
+              </div>
             </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
+
     </div>
 
-    <div ckass="row">
+    <div class="row">
       <div class="col-md-8 col-md-offset-2 col-sm-12">
         <tabset justified="true" style="margin-top: 10px; padding-bottom: 50px;">
           <tab>
             <tab-heading heading="Justified">
-              <span class="tabheading"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Posts<br/>{{allPosts.length}}</span>
+              <span class="tabheading"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> All Book Listings<br/>{{allPosts.length}}</span>
             </tab-heading>
             <div>
               <div class="post" ng-repeat="post in allPosts | reverse">
@@ -130,12 +147,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 25px">
+                <div style="height: 50px" class="bottomexpand">
                   <div style="width: 60px; float: left">&nbsp;</div>
-                  <div style="width: 70%; float: left">
+                  <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
+                    <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
+                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -143,7 +162,7 @@
           </tab>
           <tab>
             <tab-heading heading="SJ">
-              <span class="tabheading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> My Post <br/>{{myPosts.length}}</span>
+              <span class="tabheading"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> My Listings <br/>{{myPosts.length}}</span>
             </tab-heading>
             <div>
               <div class="post" ng-repeat="post in myPosts | reverse">
@@ -160,12 +179,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 25px">
+                <div style="height: 50px" class="bottomexpand">
                   <div style="width: 60px; float: left">&nbsp;</div>
-                  <div style="width: 70%; float: left">
+                  <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
+                    <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
+                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -191,12 +212,14 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 25px">
+                <div style="height: 50px" class="bottomexpand">
                   <div style="width: 60px; float: left">&nbsp;</div>
-                  <div style="width: 70%; float: left">
+                  <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
                     <i ng-if="!post.isFaved" class="fa fa-star fa-2x favourite" popover="Add Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>
                     <i ng-if="post.isFaved" class="fa fa-star fa-2x favourited" popover="Undo Favourite" popover-trigger="mouseenter" popover-popup-delay="300" ng-click="addFav(post.id, $event)"></i>{{post.fav}}
+                    <i data-ng-if="post.owner ==='Ryan Dang'" class="glyphicon glyphicon-pencil edit" popover="Edit Your Post" popover-trigger="mouseenter" popover-popup-delay="300"  aria-hidden="true"></i>
+                    <img src="images/continue.png" class="continue" popover="Display or hide trimmed content" popover-trigger="mouseenter" popover-popup-delay="100"/>
                   </div>
                 </div>
               </div>
@@ -220,6 +243,36 @@
 
     <script type="text/javascript">
     $(function() {
+
+      $('#textarea2').textcomplete([
+          { // tech companies
+              words: [ '#google', '#Google', 'facebook', '#apple', '#github', "#cheap", "#BSD", "#CPA", "#bsd", "#cpa", "#BTN710", "#BTS730", "#BTH740", "#YORK", "#KING", "#Markham", "#OTHER", "#sell", "#buy", "#book"],
+              match: /(#\w+)$/i,
+              search: function (term, callback) {
+                  callback($.map(this.words, function (word) {
+                      return word.indexOf(term) === 0 ? word : null;
+                  }));
+              },
+              index: 1,
+              replace: function (word) {
+                  return word + ' ';
+              }
+          }
+      ], { maxCount: 5, className: "hashtag"});
+
+      $(".bottomexpand").click(function() {
+          var expandable = $(this).parent().find("div").first();
+
+          if(expandable.height() == 100) {
+            expandable.css("height", "auto");
+            var height = expandable.height();
+            expandable.css("height", "100px");
+            expandable.animate({ height: height }, 150);
+          }
+          else
+            expandable.animate({ height: "100px" }, 150);
+      });
+
       $(".expandable").click(function() {
         if($(this).height() == 100) {
           $(this).css("height", "auto");
