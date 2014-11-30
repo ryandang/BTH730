@@ -2,6 +2,14 @@ h1, h2, h3, a {
     color: #eb5252;
 }
 
+a:focus: {
+    border: solid 0px red;
+}
+
+li:focus: {
+    border: solid 0px red;
+}
+
 .bg {
 
     background-image:url('../images/bg3.jpg');
@@ -79,17 +87,17 @@ h1, h2, h3, a {
 
 .reply {
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 35px;
 }
 
 .reply:hover {
-    color: #eb5252;
+    opacity: 0.8;
 }
 
 .favourite {
     cursor: pointer;
     margin-left: 50px;
-    margin-top: 5px;
+    margin-top: 35px;
 }
 
 .favourite:hover {
@@ -111,14 +119,6 @@ h1, h2, h3, a {
     background-color: #eb5252;
 }
 
-/*.close {
-    color: #eb5252;
-}
-
-.close:hover {
-    color: black;
-}*/
-
 .inline {
     /*display: inline;*/
     text-align: center;
@@ -129,6 +129,7 @@ h1, h2, h3, a {
     display: inline-block;
     height: 30px;
     color: black;
+    margin-top: 10px;
 
 }
 .list-group a:hover
@@ -175,6 +176,33 @@ h1, h2, h3, a {
     cursor: pointer;
     position: absolute;
     left: 30px;
+}
+
+.edit {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.edit:hover {
+    opacity: 0.8;
+}
+
+.bottomexpand {
+
+    cursor: pointer;
+}
+
+.continue {
+    opacity: 0.5;
+    position: absolute;
+    left: -5px;
+
+}
+
+.continue:hover {
+    opacity: 1;
 }
 
 @media (max-width: 900px) {

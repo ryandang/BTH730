@@ -24,7 +24,7 @@
 
     </script>
         <div class="modal-header">
-            <h3 class="modal-title inline">Make New Post</h3> <i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -40px" ng-click="cancel()"></i>
+            <h3 class="modal-title inline">List A Book</h3> <i class="glyphicon glyphicon-remove close" aria-hidden="true" style="position: relative; top: -40px" ng-click="cancel()"></i>
 
         </div>
         <div class="modal-body">
@@ -41,15 +41,15 @@
             </div>
           </div>
           <br/>
-           <label>Select Campus</label>
-            <div class="list-group">
+           <label>Select Campus Below:</label> <br/><i>Click on the button to select or de-select your campuses</i>
+            <div class="list-group" style="box-shadow: 0px 0px 0px #888888;">
               <a href="#" class="list-item {{selectedYork? 'selectedTag' : ''}}" ng-click="selectedYork=!selectedYork">York</a>
               <a href="#" class="list-item {{selectedMarkham? 'selectedTag' : ''}}" ng-click="selectedMarkham=!selectedMarkham">Markham</a>
               <a href="#" class="list-item {{selectedNewnham? 'selectedTag' : ''}}" ng-click="selectedNewnham=!selectedNewnham">Newnham</a>
               <a href="#" class="list-item {{selectedKing? 'selectedTag' : ''}}" ng-click="selectedKing=!selectedKing">King</a>
               <a href="#" class="list-item {{selectedOther? 'selectedTag' : ''}}" ng-click="selectedOther=!selectedOther">Other</a>
             </div>
-            <textarea id="textarea1" rows="5" class="form-control" ng-model="description" placeholder="Description. Don't forget to use hashtag!"></textarea>
+            <textarea id="textarea1" rows="5" class="form-control" ng-model="description" placeholder="Description. Don't forget to use hashtag! e.g: #cheap book for #BTH740"></textarea>
             <div id="previewImage">
 
             </div>
@@ -58,6 +58,6 @@
             <input id="file" type="file" class="file"/><i class="fa fa-camera fa-2x camera"></i>
 
             <button type="button" class="btn btn-danger btn-md" ng-click="ok()">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"> Post</span>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Add To Listing
             </button>
         </div>
