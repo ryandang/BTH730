@@ -44,14 +44,15 @@ li:focus: {
     background-repeat:no-repeat;
     background-size: 100%;
     background-position:center;
-    height: 400px;
+    height: 250px;
     min-width: 500px;
 }
 
 
 .profile {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+    margin-left: 30px;
 }
 
 
