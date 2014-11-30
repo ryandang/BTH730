@@ -21,6 +21,36 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+      function expand(e) {
+        console.log(e);
+        if($(e).height() == 100) {
+          $(e).css("height", "auto");
+          var height = $(e).height();
+          $(e).css("height", "100px");
+          $(e).animate({ height: height }, 150);
+        }
+        else
+          $(e).animate({ height: "100px" }, 150);
+      }
+
+      function bottomExpand(e) {
+          var expandable = $(e).parent().find("div").first();
+
+          if(expandable.height() == 100) {
+            expandable.css("height", "auto");
+            var height = expandable.height();
+            expandable.css("height", "100px");
+            expandable.animate({ height: height }, 150);
+          }
+          else
+            expandable.animate({ height: "100px" }, 150);
+      }
+      </script>
 
   </head>
   <body ng-controller="viewController">
@@ -134,7 +164,7 @@
             </tab-heading>
             <div>
               <div class="post" ng-repeat="post in allPosts | reverse">
-                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable" onclick="expand(this)">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
                   <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
@@ -147,7 +177,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand">
+                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -166,7 +196,7 @@
             </tab-heading>
             <div>
               <div class="post" ng-repeat="post in myPosts | reverse">
-                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable" onclick="expand(this)">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
                   <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
@@ -179,7 +209,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand">
+                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -199,7 +229,7 @@
             <div>
               <div ng-if="!myFavs.length"> You don't have any Favourite post yet.</div>
               <div class="post" ng-repeat="post in myFavs | reverse">
-                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable">
+                <div style="width: 100%; cursor: pointer; float: left; height: 100px; overflow: hidden" class="expandable" onclick="expand(this)">
                   <div style="width: 60px; float: left"><img src="{{post.profile}}" width="50" height="50" style="border-radius: 5px;"/></div>
                   <div style="float: left; width: 55%;"><b>{{post.owner}}</b> &nbsp;&nbsp;&nbsp; <i>{{post.date | date:'dd-MMM-yyyy HH:mm:ss' }}</i> <br/> <span ng-bind-html="post.type"></span> <b><i style="text-decoration: underline">{{post.title}}</i></b>. <span ng-bind-html="post.content"></span>
                    <br/><br/> <b>Campuses</b>: <span ng-repeat="campus in post.campuses"><span ng-bind-html="campus"></span> </span>
@@ -212,7 +242,7 @@
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <div style="height: 50px" class="bottomexpand">
+                <div style="height: 50px" class="bottomexpand" onclick="bottomExpand(this)">
                   <div style="width: 60px; float: left">&nbsp;</div>
                   <div style="width: 70%; float: left; position: relative;">
                     <i class="fa fa-reply fa-2x reply" popover="Reply" popover-trigger="mouseenter" popover-popup-delay="300"></i> {{post.reply}}
@@ -229,8 +259,7 @@
       </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -259,31 +288,6 @@
               }
           }
       ], { maxCount: 5, className: "hashtag"});
-
-      $(".bottomexpand").click(function() {
-          var expandable = $(this).parent().find("div").first();
-
-          if(expandable.height() == 100) {
-            expandable.css("height", "auto");
-            var height = expandable.height();
-            expandable.css("height", "100px");
-            expandable.animate({ height: height }, 150);
-          }
-          else
-            expandable.animate({ height: "100px" }, 150);
-      });
-
-      $(".expandable").click(function() {
-        if($(this).height() == 100) {
-          $(this).css("height", "auto");
-          var height = $(this).height();
-          $(this).css("height", "100px");
-          $(this).animate({ height: height }, 150);
-        }
-        else
-          $(this).animate({ height: "100px" }, 150);
-
-      });
     });
     </script>
   </body>
